@@ -1,7 +1,7 @@
-import { FlatList, NativeBaseProvider, VStack, Box, Divider, Container, HStack, Icon } from 'native-base';
+import { FlatList, NativeBaseProvider, VStack,Container, HStack } from 'native-base';
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Text, StyleSheet, Image } from 'react-native';
+import {FAB} from 'react-native-paper';
 
 export default function Dashboard() {
 
@@ -23,37 +23,64 @@ export default function Dashboard() {
       name: 'BMW 1000RR',
       price: 100236,
       location: 'India'
-    },
+    },  
   ];
 
 
   return (
     <NativeBaseProvider>
-      <Text>Hello</Text>
+      <Container style={classes.mainParent} >
+        <Text style={classes.mainHeading} >Welcome!</Text>
+      </Container>
       <FlatList contentContainerStyle={classes.parent} data={data} renderItem={({ item }) =>
         <Container style={classes.itemContainer}>
           <HStack style={classes.hStack} > 
             <Text style={classes.vehicleName} >{item.name}</Text>
             <VStack style={classes.vStack} >
 
-              <Container>
-                <Text>{item.location}</Text>
-              </Container>
-              <Container>
+              <HStack>
+                <Text style={{color : 'white'}} >{item.location}</Text>
+                <Image style={classes.locationIcon} source={require('MainApp/assets/images/icons8-visit-32.png')} />
+              </HStack>
+              <HStack style={{alignItems : 'center'}}>
                 <Text style={classes.price} >$ {item.price}</Text>
-              </Container>
+                <Image style={[classes.locationIcon, classes.priceIcon]} source={require('MainApp/assets/images/icons8-us-dollar-circled-60.png')} />
+              </HStack>
             </VStack>
           </HStack>
         </Container>
       } keyExtractor={item => item.id} >
 
       </FlatList>
+      <FAB
+        icon="plus"
+        style={classes.fab}
+        onPress={() => console.log('Pressed')}
+      />
     </NativeBaseProvider>);
 
 
 }
 
 const classes = StyleSheet.create({
+  mainParent : {
+    backgroundColor: '#83c5be',
+    width : '100%',
+    justifyContent : 'center',
+    alignItems : 'center',
+    alignSelf : 'center',
+    borderRadius : 10,
+    marginTop : 10,
+    paddingTop : 10,
+    paddingBottom : 10,
+    marginBottom : 20,
+  },
+
+  mainHeading : {
+    fontWeight : 'bold',
+    fontSize : 20,
+    
+  },
 
   itemContainer: {
     backgroundColor: '#219ebc',
@@ -80,11 +107,31 @@ const classes = StyleSheet.create({
 
   vehicleName : {
     color : 'white',
-    fontSize : 20,
+    fontSize : 22,
     width : '50%',
     fontWeight : 'bold',
   },
   price : {
     fontSize : 18,
-  }
+    fontWeight : 'bold',
+    color : 'white',
+    
+  },
+
+  priceIcon : {
+    marginLeft : 10,
+  },
+
+  locationIcon : {
+    width : 20,
+    height : 20,
+
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+ 
+  },
 });
