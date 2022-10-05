@@ -27,7 +27,7 @@ export default function Dashboard(props) {
   ];
 
   const navigate = (props) => {
-    props.navigation.navigate('Login');
+    props.navigation.navigate('AddVehicle');
   }
 
   return (
