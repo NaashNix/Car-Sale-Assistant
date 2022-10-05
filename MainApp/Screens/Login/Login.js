@@ -2,7 +2,13 @@ import React from 'react'
 import { StyleSheet, Image } from 'react-native';
 import { VStack, Heading, NativeBaseProvider, Input, Button, HStack} from 'native-base';
 
-export default function Login({navigation}) {
+export default function Login(props) {
+
+   const navigate = (props) => {
+      props.navigation.navigate('Signup');
+   }
+
+
   return (
      <NativeBaseProvider>
         <VStack style={styles.parent} space={4} alignItems="center" >
@@ -15,7 +21,7 @@ export default function Login({navigation}) {
            <Input style={styles.input} variant={'underlined'} placeholder={'Password'} />
            <HStack space={4} >
               <Button style={styles.button} variant={'subtle'} isLoadingText={"Loading.."} colorScheme={'primary'} >Login</Button>
-              <Button style={styles.button} variant={'subtle'} colorScheme={'secondary'} onPress={() => navigation.navigate("Signup")} >Register</Button>
+              <Button style={styles.button} variant={'subtle'} colorScheme={'secondary'} onPress={() => navigate(props)} >Register</Button>
            </HStack>
         </VStack >
      </NativeBaseProvider>

@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, StyleSheet, Image } from 'react-native';
 import {FAB} from 'react-native-paper';
 
-export default function Dashboard() {
+export default function Dashboard(props) {
 
   const data = [
     {
@@ -26,6 +26,9 @@ export default function Dashboard() {
     },  
   ];
 
+  const navigate = (props) => {
+    props.navigation.navigate('Login');
+  }
 
   return (
     <NativeBaseProvider>
@@ -55,7 +58,7 @@ export default function Dashboard() {
       <FAB
         icon="plus"
         style={classes.fab}
-        onPress={() => console.log('Pressed')}
+        onPress={() => navigate(props) }
       />
     </NativeBaseProvider>);
 

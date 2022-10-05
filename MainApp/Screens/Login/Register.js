@@ -2,22 +2,23 @@ import React from 'react';
 import { StyleSheet, Appearance } from 'react-native';
 import { VStack, Heading, NativeBaseProvider, Input, Button, HStack } from 'native-base';
 
-export default function Register() {
+export default function Register(props) {
 
-   const colorSchema = Appearance.getColorScheme();
-   console.log(colorSchema);
+   const navigate = (props) => {
+      props.navigation.navigate('Dashboard');
+   }
 
    return (
       <NativeBaseProvider>
-         <VStack style={styles.parent} space={4} alignItems="center" >
             <Heading style={styles.heading} >Signup</Heading>
+         <VStack style={styles.parent} space={4} alignItems="center" >
             <Input style={styles.input} variant={'underlined'} placeholder={'Full Name'} />
             <Input style={styles.input} variant={'underlined'} placeholder={'Email'} />
             <Input style={styles.input} variant={'underlined'} placeholder={'Username'} />
             <Input style={styles.input} variant={'underlined'} placeholder={'Password'} />
             <HStack space={4} >
                <Button style={styles.button} variant={'subtle'}  isLoadingText={"Loading.."} colorScheme={'primary'} >Create Account</Button>
-               <Button style={styles.button} variant={'subtle'} colorScheme={'secondary'} >Back</Button>
+               <Button style={styles.button} variant={'subtle'} colorScheme={'secondary'} onPress={ () => {navigate(props)} } >Dashboard</Button>
             </HStack>
          </VStack >
       </NativeBaseProvider>

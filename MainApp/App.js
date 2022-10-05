@@ -1,14 +1,12 @@
 import React from 'react';
-import 'react-native-gesture-handler';
-import { Text } from 'react-native';
 import Login from './Screens/Login/Login';
 import Register from './Screens/Login/Register';
 import Dashboard from './Screens/VehicleList/Dashboard';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
