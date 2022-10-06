@@ -1,11 +1,20 @@
 import React from 'react';
 import { StyleSheet, Appearance } from 'react-native';
-import { VStack, Heading, NativeBaseProvider, Input, Button, HStack, FormControl, WarningOutlineIcon,Box, Text, Divider } from 'native-base';
+import { VStack, Heading, NativeBaseProvider, Input, HStack, FormControl, WarningOutlineIcon,Box, Text, Divider } from 'native-base';
+import { Button } from 'react-native-paper';
 
 export default function Register(props) {
 
+   const [name, setName] = useState('');
+   const [email, setEmail] = useState('');
+   const [username, setUsername] = useState('');
+   const [password, setPassword] = useState('');
+
+   
    const navigate = (props) => {
-      props.navigation.navigate('Dashboard');
+
+      console.log(name+ " | "+email);
+      // props.navigation.navigate('Dashboard');
    }
 
    return (
@@ -20,7 +29,7 @@ export default function Register(props) {
                <FormControl.Label _text={{ fontWeight: 'bold', fontSize: '15' }}>
                   Full Name
                </FormControl.Label>
-               <Input w='100%' fontSize={14} placeholder="John Smith" focusOutlineColor={'#7E7E7E'} backgroundColor={'#D9D9D9'} />
+               <Input value={setName()} w='100%' fontSize={14} placeholder="John Smith" focusOutlineColor={'#7E7E7E'} backgroundColor={'#D9D9D9'} />
                <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                   Can't be empty.
                </FormControl.ErrorMessage>
@@ -61,8 +70,8 @@ export default function Register(props) {
 
 
             <HStack space={4} >
-               <Button style={styles.button} variant={'subtle'}  isLoadingText={"Loading.."} colorScheme={'primary'} >Create Account</Button>
-               <Button style={styles.button} variant={'subtle'} colorScheme={'secondary'} onPress={ () => {navigate(props)} } >Dashboard</Button>
+               <Button mode="contained" style={styles.addButton}  buttonColor={'#16a085'} textColor={'white'} onPress={() => console.log('Pressed')} >Create</Button>
+               <Button mode="contained" style={styles.addButton}  buttonColor={'grey'} textColor={'white'} onPress={() => console.log('Pressed')} >Back</Button>
             </HStack>
          </VStack >
       </NativeBaseProvider>
@@ -83,9 +92,10 @@ const styles = StyleSheet.create({
       color:'white',
       fontSize:20,
    },
-   button : {
-      color : 'white',
-      fontSize : 15,
-   }
+   addButton: {
+      borderRadius: 5,
+      marginTop: 15,
+      marginLeft: 10
+   },
    
 });
