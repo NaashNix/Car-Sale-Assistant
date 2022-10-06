@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Appearance } from 'react-native';
-import { VStack, Heading, NativeBaseProvider, Input, Button, HStack } from 'native-base';
+import { VStack, Heading, NativeBaseProvider, Input, Button, HStack, FormControl, WarningOutlineIcon,Box, Text, Divider } from 'native-base';
 
 export default function Register(props) {
 
@@ -10,12 +10,56 @@ export default function Register(props) {
 
    return (
       <NativeBaseProvider>
-            <Heading style={styles.heading} >Signup</Heading>
+         <Box w={'100%'} alignItems={'center'} marginTop={5} >
+            <Text marginBottom={5} color={'#7E7878'} fontSize={'lg'} >Create account to get started!</Text>
+            <Divider w={'75%'} />
+         </Box>
+         
          <VStack style={styles.parent} space={4} alignItems="center" >
-            <Input style={styles.input} variant={'underlined'} placeholder={'Full Name'} />
-            <Input style={styles.input} variant={'underlined'} placeholder={'Email'} />
-            <Input style={styles.input} variant={'underlined'} placeholder={'Username'} />
-            <Input style={styles.input} variant={'underlined'} placeholder={'Password'} />
+            <FormControl isInvalid={false} w="100%">
+               <FormControl.Label _text={{ fontWeight: 'bold', fontSize: '15' }}>
+                  Full Name
+               </FormControl.Label>
+               <Input w='100%' fontSize={14} placeholder="John Smith" focusOutlineColor={'#7E7E7E'} backgroundColor={'#D9D9D9'} />
+               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+                  Can't be empty.
+               </FormControl.ErrorMessage>
+            </FormControl>
+            
+
+            <FormControl isInvalid={false} w="100%">
+               <FormControl.Label _text={{ fontWeight: 'bold', fontSize: '15' }}>
+                 Your Email
+               </FormControl.Label>
+               <Input w='100%' fontSize={14} placeholder="sample@our.com" focusOutlineColor={'#7E7E7E'} backgroundColor={'#D9D9D9'} />
+               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+                  Can't be empty.
+               </FormControl.ErrorMessage>
+            </FormControl>
+
+
+            <FormControl isInvalid={false} w="100%">
+               <FormControl.Label _text={{ fontWeight: 'bold', fontSize: '15' }}>
+                  Username
+               </FormControl.Label>
+               <Input w='100%' fontSize={14} placeholder="Only Letters (A-z)" focusOutlineColor={'#7E7E7E'} backgroundColor={'#D9D9D9'} />
+               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+                  Can't be empty.
+               </FormControl.ErrorMessage>
+            </FormControl>
+
+
+            <FormControl isInvalid={false} w="100%">
+               <FormControl.Label _text={{ fontWeight: 'bold', fontSize: '15' }}>
+                  Password
+               </FormControl.Label>
+               <Input w='100%' fontSize={14} placeholder="Must be 4 characters." focusOutlineColor={'#7E7E7E'} backgroundColor={'#D9D9D9'} />
+               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+                  Can't be empty.
+               </FormControl.ErrorMessage>
+            </FormControl>
+
+
             <HStack space={4} >
                <Button style={styles.button} variant={'subtle'}  isLoadingText={"Loading.."} colorScheme={'primary'} >Create Account</Button>
                <Button style={styles.button} variant={'subtle'} colorScheme={'secondary'} onPress={ () => {navigate(props)} } >Dashboard</Button>
@@ -27,7 +71,7 @@ export default function Register(props) {
 
 const styles = StyleSheet.create({
    parent : {
-      marginTop:'10%',
+      marginTop:'5%',
       marginLeft: '5%',
       marginRight: '5%',
    },

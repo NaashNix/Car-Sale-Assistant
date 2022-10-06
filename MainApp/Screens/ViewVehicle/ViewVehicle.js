@@ -13,16 +13,6 @@ import ownerIcon from 'MainApp/assets/images/icons8-male-user-96.png';
 
 export default function ViewVehicle(props) {
 
-   const data = [
-      {
-         itemId: 'I001',
-         color: '',
-         outerColor: '',
-         image: '',
-
-      },
-   ];
-
    const { message } = props.route.params;
    console.log(message);
 
