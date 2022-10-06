@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Text } from 'native-base';
+import { Box, HStack, Text, VStack } from 'native-base';
 import { Image as NativeImage, StyleSheet } from 'react-native';
 import noImage from 'MainApp/assets/images/ImageNotFound.png';
 
@@ -12,12 +12,16 @@ export default function DetailsElement({
 }) {
    return (
       <Box style={classes.outerParent} backgroundColor={outerColor} >
-         <Text color={color} >{title}</Text>
-         <NativeImage
-            source={image}
-            style={{ width: 28, height: 28, tintColor : color, }}
-         />
-         <Text color={color} fontSize={18} fontWeight={'bold'} >{value}</Text>
+         
+         <VStack alignItems={'center'} w={'20%'} >
+            <Text color={color} >{title}</Text>
+            <NativeImage
+               source={image}
+               style={{ width: 28, height: 28, tintColor: color, }}
+            />
+         </VStack>
+         
+         <Text color={color} fontSize={22} fontWeight={'bold'} >{value}</Text>
       </Box>
    );
 }
@@ -25,11 +29,12 @@ export default function DetailsElement({
 
 const classes = StyleSheet.create({
    outerParent: {
-      width: 100, // Have to change in later
-      height: 100, // Have to change in later when setting to the parent.
-      justifyContent: 'center',
+      width: '90%', // Have to change in later
+      justifyContent: 'space-between',
       alignItems: 'center',
       borderRadius: 10,
       margin: 10,
+      padding : 15,
+      flexDirection : 'row'
    },
 });
