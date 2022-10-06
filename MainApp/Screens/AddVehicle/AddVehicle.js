@@ -169,7 +169,7 @@ export default function() {
                <HStack justifyContent={'flex-end'} >
                   <Button mode={'container'} buttonColor={'#16a085'} textColor={'white'} labelStyle={classes.buttonLabels} style={classes.addButton} >Add Vehicle</Button>
                   <Button mode={'outlined'} buttonColor={'#7f8c8d'} textColor={'white'} labelStyle={classes.buttonLabels} style={classes.addButton} >Back</Button>
-               </HStack>
+               </HStack>   
             </VStack>
          </ScrollView>
       </NativeBaseProvider >

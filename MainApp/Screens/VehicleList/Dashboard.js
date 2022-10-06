@@ -1,6 +1,6 @@
 import { FlatList, NativeBaseProvider, VStack,Container, HStack } from 'native-base';
 import React from 'react';
-import { Text, StyleSheet, Image } from 'react-native';
+import { Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import {FAB} from 'react-native-paper';
 
 export default function Dashboard(props) {
@@ -30,13 +30,17 @@ export default function Dashboard(props) {
     props.navigation.navigate('AddVehicle');
   }
 
+  const navigateViewVehicle = (props, message) => {
+    props.navigation.navigate('ViewVehicle',{message : message});
+  }
+
   return (
     <NativeBaseProvider>
       <Container style={classes.mainParent} >
         <Text style={classes.mainHeading} >Welcome!</Text>
       </Container>
       <FlatList contentContainerStyle={classes.parent} data={data} renderItem={({ item }) =>
-        <Container style={classes.itemContainer}>
+        <TouchableOpacity style={classes.itemContainer} onPress={() => navigateViewVehicle(props,"String")} >
           <HStack style={classes.hStack} > 
             <Text style={classes.vehicleName} >{item.name}</Text>
             <VStack style={classes.vStack} >
@@ -51,7 +55,7 @@ export default function Dashboard(props) {
               </HStack>
             </VStack>
           </HStack>
-        </Container>
+        </TouchableOpacity>
       } keyExtractor={item => item.id} >
 
       </FlatList>
@@ -87,8 +91,8 @@ const classes = StyleSheet.create({
 
   itemContainer: {
     backgroundColor: '#219ebc',
-    marginLeft: 5,
-    marginRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     marginTop: 10,
     marginBottom: 10,
     borderRadius : 10,
