@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { StyleSheet, Image } from 'react-native';
 import { VStack, Heading, NativeBaseProvider, Input, Button, HStack} from 'native-base';
 
 export default function Login(props) {
+
+   const [username, setUsername] = useState('');
+   const [password, setPassword] = useState('');
 
    const navigate = (props) => {
       props.navigation.navigate('Signup');
@@ -17,8 +20,8 @@ export default function Login(props) {
               source={require('MainApp/assets/images/carImage.png')}
            />
            <Heading style={styles.heading} >Login</Heading>
-           <Input style={styles.input} variant={'underlined'} placeholder={'Username'} />
-           <Input style={styles.input} variant={'underlined'} placeholder={'Password'} />
+           <Input value={username} onChange={(e) => e.nativeEvent.text} style={styles.input} variant={'underlined'} placeholder={'Username'} />
+           <Input value={password} onChange={(e) => e.nativeEvent.text} style={styles.input} variant={'underlined'} placeholder={'Password'} />
            <HStack space={4} >
               <Button style={styles.button} variant={'subtle'} isLoadingText={"Loading.."} colorScheme={'primary'} >Login</Button>
               <Button style={styles.button} variant={'subtle'} colorScheme={'secondary'} onPress={() => navigate(props)} >Register</Button>
